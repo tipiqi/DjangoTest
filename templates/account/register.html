@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titel %}欢迎来到注册页面{% endblock %}
+{% block content %}
+<div class="row text-center align-middle">
+<h1>Register</h1>
+<P>If you are a user, <strong><a href="{% url 'account:user_register' %}">Login</a></strong>,Please</P>
+<P>or register.</P>
+<form class="form-horizontal" action="." method="post">
+    {% csrf_token %}
+    <div class="form-group">
+{#        <label for="{{ form.username.id_for_label }}" class="col-md-5 control-label">Username</label>#}
+        <label class="col-md-5 control-label">Username</label>
+        <div>{{ form.username }}</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-5 control-label">Email</label>
+        <div>{{ form.email }}</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-5 control-label">Password</label>
+        <div>{{ form.password }}</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-5 control-label">Password2</label>
+        <div>{{ form.password2 }}</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-5 control-label">Phone</label>
+        <div>{{ profile.phone }}</div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-5 control-label">Birthday</label>
+        <div>{{ profile.birthday }}</div>
+    </div>
+    <div><input type="submit" class="btn btn-primary btn-lg" value="Register注册"></div>
+</form>
+</div>
+{% endblock %}

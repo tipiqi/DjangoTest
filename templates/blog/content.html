@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block title %}这里是博客的内容页{% endblock %}
+
+
+{% block content %}
+    <div class="row text-center vertical-middle-sm">
+        <h1>我的Blog，My zone。{{ artcles.title }}</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <P class="text-center">
+                <span>
+                    {{ artcles.author.username }}
+                </span>
+                <span style="margin-left: 20px">
+                    {{ publish }}
+                </span>
+            </P>
+
+        </div>
+    <div>
+        <li>
+            <h2>
+                这里是content的展示
+            </h2>
+        </li>
+    </div>
+    </div>
+{% endblock %}

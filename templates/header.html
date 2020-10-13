@@ -1,0 +1,33 @@
+{% load static %}   {#  模板中声明引入静态文件的标签，只有使用它，语句②中才能使用{%static'images/logo.png'%}，而不是用“硬编码”的方式写图片地址。#}
+<div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://www.baidu.com"><img src = "{% static '/images/new1.png' %}"  width="100px"></a>
+{#   这个写法也是Django模板的一个语法，{%static%}可以用来引入某个静态文件，此处表示引入了静态文件中的一张图片，注意使用格式和文件路径         #}
+        </div>
+        <div>
+            <ul class="nav navbar-nav" role="navigation">
+                <li><a href="{% url 'blog:blog_title' %}">BLOG</a></li>
+{#   {%url'blog：blog_title'%}使用了在./mysite/urls.py的URLconf中为应用设置的namespace和相关应用中的name值，拼接成该应用的入口链接URL。这样做同样是要避免“硬编码”         #}
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 20px">
+{#                {% if user.is_authenticated %}   后续需根据变更提取值后判断然后展示，当前无法获取到值#}
+{#                <li><a href="{% url 'account:user_login' %}">{{ user.username }}username+LOGIN</a></li>#}
+                  <li>
+                      <div class="dropdown" style="margin-top: 8px">
+                          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu">{{ user.username }}username+LOGIN<span class="caret"></span></button>
+                          <ul class="dropdown-menu">
+                            <li><a href="{% url 'account:user_register' %}">修改密码/注册</a></li>
+                          </ul>
+                      </div>
+                  </li>
+
+{#                <li><a href="{% url 'account:user_login' %}">LOGIN</a></li>#}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
