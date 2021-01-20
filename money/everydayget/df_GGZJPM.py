@@ -76,12 +76,12 @@ for data in json.loads(response.text).get('data').get('diff'):
     keys = ','.join(data.keys())
     values = ','.join(['%s'] * len(data))
     # sql = 'INSERT INTO{table}({keys}) VALUES ({values})'.format(table=table,keys=keys,values=values)
-#     sql = 'INSERT IGNORE INTO df_GGZJPM({keys}) VALUES ({values})'.format(keys=keys, values=values)
-#     try:
-#         if cursor.execute(sql, tuple(data.values())):
-#             print("successful")
-#             db.commit()
-#     except:
-#         print("failed")
-#         db.rollback()
-# db.close()
+    sql = 'INSERT IGNORE INTO df_GGZJPM({keys}) VALUES ({values})'.format(keys=keys, values=values)
+    try:
+        if cursor.execute(sql, tuple(data.values())):
+            print("successful")
+            db.commit()
+    except:
+        print("failed")
+        db.rollback()
+db.close()
